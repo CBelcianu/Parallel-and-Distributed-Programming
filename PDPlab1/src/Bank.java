@@ -51,9 +51,7 @@ public class Bank {
         executorService.shutdown();
 
         for(Account acc:this.accounts){
-            System.out.println("AccountId: " + acc.getId());
-            System.out.println(acc.getLogs());
-            System.out.println("Balance: " + acc.getBalance());
+            acc.prettyPrint();
         }
         CheckerTask checkerTask = new CheckerTask(this.noTranscations, this.accounts);
         checkerTask.run();
