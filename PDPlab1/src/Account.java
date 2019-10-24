@@ -25,14 +25,14 @@ public class Account {
         this.logs.add(new Pair<>(TransactionId, sum));
         if (AccountId != null){
             if (sum > 0){
-                this.prettyLogs += "\n#" + TransactionId + " received " + sum + " from Account" + AccountId;
+                this.prettyLogs += "\n\t#" + TransactionId + " received " + sum + " from Account" + AccountId;
             }
             else{
-                this.prettyLogs += "\n#" + TransactionId + " sent " + -sum + " to Account" + AccountId;
+                this.prettyLogs += "\n\t#" + TransactionId + " sent " + -sum + " to Account" + AccountId;
             }
         } else {
-            String target = "\n#" + TransactionId;
-            String replacement = "\n#" + TransactionId + " FAILED TASK:";
+            String target = "\n\t#" + TransactionId;
+            String replacement = "\n\t#" + TransactionId + " FAILED TASK:";
             this.prettyLogs = this.prettyLogs.replaceAll(target, replacement);
         }
     }

@@ -15,9 +15,9 @@ public class CheckerThread implements Runnable {
     public void run() {
         Timer timer = new Timer();
         CheckerTask checkerTask = new CheckerTask(this.noTrasnactions, this.accounts);
-        timer.schedule(checkerTask, 800,800);
+        timer.schedule(checkerTask, 50,50);
         try {
-            TimeUnit.SECONDS.sleep(12);
+            TimeUnit.MILLISECONDS.sleep(400);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

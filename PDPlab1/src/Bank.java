@@ -44,7 +44,7 @@ public class Bank {
         this.threads.forEach(executorService::execute);
         executorService.execute(this.checkerThread);
         try {
-            executorService.awaitTermination(15, TimeUnit.SECONDS);
+            executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
