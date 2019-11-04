@@ -284,7 +284,6 @@ public class AppStart {
             }
         }
         System.out.println("bye");
-        //System.out.println(hm);
     }
 
     public static void printMatrix(int[][] matrix){
