@@ -1,0 +1,11 @@
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\bin\Debug\netcoreapp2.1\PDPlab5.deps.json
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\bin\Debug\netcoreapp2.1\PDPlab5.runtimeconfig.json
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\bin\Debug\netcoreapp2.1\PDPlab5.runtimeconfig.dev.json
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\bin\Debug\netcoreapp2.1\PDPlab5.dll
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\bin\Debug\netcoreapp2.1\PDPlab5.pdb
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\obj\Debug\netcoreapp2.1\PDPlab5.csprojAssemblyReference.cache
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\obj\Debug\netcoreapp2.1\PDPlab5.csproj.CoreCompileInputs.cache
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\obj\Debug\netcoreapp2.1\PDPlab5.AssemblyInfoInputs.cache
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\obj\Debug\netcoreapp2.1\PDPlab5.AssemblyInfo.cs
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\obj\Debug\netcoreapp2.1\PDPlab5.dll
+C:\Work\facultate\an3\sem1\Parallel-and-Distributed-Programming\PDPlab5\PDPlab5\obj\Debug\netcoreapp2.1\PDPlab5.pdb

@@ -283,7 +283,7 @@ public class AppStart {
                 cmd = keyboard.nextInt();
             }
         }
-        System.out.println("bye");
+        //System.out.println("bye");
     }
 
     public static void printMatrix(int[][] matrix){
