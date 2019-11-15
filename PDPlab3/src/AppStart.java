@@ -7,7 +7,7 @@ public class AppStart {
         int[][] A = new int[100][100];
         int[][] B = new int[100][100];
         int[][] C = new int[100][100];
-        HashMap<String, Long> hm = new HashMap();
+        HashMap<String, HashMap<String, Long>> hm = new HashMap();
 
         for(int i=0; i<A[0].length; i++){
             for(int j=0; j<A[0].length; j++){
@@ -37,7 +37,9 @@ public class AppStart {
                 long diffInNanos = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nADDITION took " + diffInNanos + "us.");
 
-                hm.put("1 thread ADDITION (thread pool)", diffInNanos);
+                HashMap<String, Long> aux = new HashMap<>();
+                aux.put("thread pool", diffInNanos);
+                hm.put("1 thread ADDITION", aux);
 
                 executorService = Executors.newFixedThreadPool(1);
                 MultiplicationThread multiplicationThread = new MultiplicationThread(A, B, C, false);
@@ -54,7 +56,8 @@ public class AppStart {
                 long diffInNanosMul = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nMULTIPLICATION took " + diffInNanosMul + "us.");
 
-                hm.put("1 thread MULTIPLICATION (thread pool)", diffInNanosMul);
+                aux.put("thread pool", diffInNanosMul);
+                hm.put("1 thread MULTIPLICATION", aux);
 
                 printMenu();
                 cmd = keyboard.nextInt();
@@ -75,7 +78,9 @@ public class AppStart {
                 long diffInNanos = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nADDITION took " + diffInNanos + "us.");
 
-                hm.put("1 thread ADDITION (future & task)", diffInNanos);
+                HashMap<String, Long> aux = new HashMap<>();
+                aux.put("future & task", diffInNanos);
+                hm.put("1 thread ADDITION", aux);
 
                 executorService = Executors.newFixedThreadPool(1);
                 MultiplicationThread multiplicationThread = new MultiplicationThread(A, B, C, true);
@@ -92,7 +97,8 @@ public class AppStart {
                 long diffInNanosMul = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nMULTIPLICATION took " + diffInNanosMul + "us.");
 
-                hm.put("1 thread MULTIPLICATION (future & task)", diffInNanosMul);
+                aux.put("future & task", diffInNanosMul);
+                hm.put("1 thread MULTIPLICATION", aux);
 
                 printMenu();
                 cmd = keyboard.nextInt();
@@ -115,7 +121,9 @@ public class AppStart {
                 long diffInNanos = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nADDITION took " + diffInNanos + "us.");
 
-                hm.put("N threads ADDITION (thread pool)", diffInNanos);
+                HashMap<String, Long> aux = new HashMap<>();
+                aux.put("thread pool", diffInNanos);
+                hm.put("N threads ADDITION", aux);
 
                 executorService = Executors.newFixedThreadPool(100);
                 List<MulByLinesThread> threadsMul = new ArrayList<>();
@@ -135,7 +143,8 @@ public class AppStart {
                 long diffInNanosMul = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nMULTIPLICATION took " + diffInNanosMul + "us.");
 
-                hm.put("N threads MULTIPLICATION (thread pool)", diffInNanosMul);
+                aux.put("thread pool", diffInNanosMul);
+                hm.put("N threads MULTIPLICATION", aux);
 
                 printMenu();
                 cmd = keyboard.nextInt();
@@ -158,7 +167,9 @@ public class AppStart {
                 long diffInNanos = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nADDITION took " + diffInNanos + "us.");
 
-                hm.put("N threads ADDITION (future & task)", diffInNanos);
+                HashMap<String, Long> aux = new HashMap<>();
+                aux.put("future & task", diffInNanos);
+                hm.put("N threads ADDITION", aux);
 
                 executorService = Executors.newFixedThreadPool(100);
                 List<MulByLinesThread> threadsMul = new ArrayList<>();
@@ -178,7 +189,8 @@ public class AppStart {
                 long diffInNanosMul = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nMULTIPLICATION took " + diffInNanosMul + "us.");
 
-                hm.put("N threads MULTIPLICATION (future & task)", diffInNanosMul);
+                aux.put("future & task", diffInNanosMul);
+                hm.put("N threads MULTIPLICATION", aux);
 
                 printMenu();
                 cmd = keyboard.nextInt();
@@ -203,7 +215,9 @@ public class AppStart {
                 long diffInNanos = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nADDITION took " + diffInNanos + "us.");
 
-                hm.put("N*N threads ADDITION (thread pool)", diffInNanos);
+                HashMap<String, Long> aux = new HashMap<>();
+                aux.put("thread pool", diffInNanos);
+                hm.put("N*N threads ADDITION", aux);
 
                 executorService = Executors.newFixedThreadPool(10000);
                 List<MulByElementsThread> threadsMul = new ArrayList<>();
@@ -225,7 +239,8 @@ public class AppStart {
                 long diffInNanosMul = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nMULTIPLICATION took " + diffInNanosMul + "us.");
 
-                hm.put("N*N threads MULTIPLICATION (thread pool)", diffInNanosMul);
+                aux.put("thread pool", diffInNanosMul);
+                hm.put("N*N threads MULTIPLICATION", aux);
 
                 printMenu();
                 cmd = keyboard.nextInt();
@@ -250,7 +265,9 @@ public class AppStart {
                 long diffInNanos = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nADDITION took " + diffInNanos + "us.");
 
-                hm.put("N*N threads ADDITION (future & task)", diffInNanos);
+                HashMap<String, Long> aux = new HashMap<>();
+                aux.put("future & task", diffInNanos);
+                hm.put("N*N threads ADDITION (future & task)", aux);
 
                 executorService = Executors.newFixedThreadPool(10000);
                 List<MulByElementsThread> threadsMul = new ArrayList<>();
@@ -272,7 +289,8 @@ public class AppStart {
                 long diffInNanosMul = Math.abs(start.getTime() - end.getTime());
                 System.out.println("\nMULTIPLICATION took " + diffInNanosMul + "us.");
 
-                hm.put("N*N threads MULTIPLICATION (future & task)", diffInNanosMul);
+                aux.put("future & task", diffInNanosMul);
+                hm.put("N*N threads MULTIPLICATION (future & task)", aux);
 
                 printMenu();
                 cmd = keyboard.nextInt();
@@ -283,7 +301,8 @@ public class AppStart {
                 cmd = keyboard.nextInt();
             }
         }
-        //System.out.println("bye");
+        System.out.println("bye");
+        System.out.println(hm);
     }
 
     public static void printMatrix(int[][] matrix){

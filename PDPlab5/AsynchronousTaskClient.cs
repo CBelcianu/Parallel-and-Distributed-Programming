@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace PDPlab5
 {
@@ -17,7 +18,7 @@ namespace PDPlab5
 
         private static String response = String.Empty;
 
-        public static void StartClient()
+        public static async void StartClient()
         {
             try
             {
@@ -28,20 +29,17 @@ namespace PDPlab5
                 Socket client = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
                 // Connect to the remote endpoint.  
-                Connect(client, remoteEP);
-                connectDone.WaitOne();
+                await Connect(client, remoteEP);
 
                 // Send test data to the remote device.  
-                Send(client, "GET /~rlupsa/edu/pdp/lab-5-futures-continuations.html HTTP/1.1\r\n" +
+                await Send(client, "GET /~rlupsa/edu/pdp/lab-5-futures-continuations.html HTTP/1.1\r\n" +
                     "Host: " + ipAddress + "\r\n" +
                      "Content-Length: 0\r\n" +
                      "\r\n");
-                sendDone.WaitOne();
 
                 // Receive the response from the remote device.  
-                Receive(client);
-                receiveDone.WaitOne();
-
+                await Receive(client);
+                
                 // Write the response to the console.  
                 Console.WriteLine("Response received : {0}", response);
                 Console.WriteLine(parseResponse(response));
@@ -69,9 +67,10 @@ namespace PDPlab5
             return contentLength;
         }
 
-        public static void Connect(Socket client, IPEndPoint remoteEP)
+        public static async Task Connect(Socket client, IPEndPoint remoteEP)
         {
-            client.BeginConnect(remoteEP, ConnectCallback, client);
+            client.BeginConnect(remoteEP, new AsyncCallback(ConnectCallback), client);
+            await Task.FromResult(connectDone.WaitOne());
         }
 
         private static void ConnectCallback(IAsyncResult ar)
@@ -94,14 +93,14 @@ namespace PDPlab5
             }
         }
 
-        private static void Receive(Socket client)
+        private static async Task Receive(Socket client)
         {
             try
             {
                 StateObject state = new StateObject();
                 state.workSocket = client;
-
                 client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReceiveCallback), state);
+                await Task.FromResult(receiveDone.WaitOne());
             }
             catch (Exception e)
             {
@@ -144,11 +143,11 @@ namespace PDPlab5
             }
         }
 
-        private static void Send(Socket client, String data)
+        private static async Task Send(Socket client, String data)
         {
             byte[] byteData = Encoding.ASCII.GetBytes(data);
-
             client.BeginSend(byteData, 0, byteData.Length, 0, new AsyncCallback(SendCallback), client);
+            await Task.FromResult(sendDone.WaitOne());
         }
 
         private static void SendCallback(IAsyncResult ar)
