@@ -22,7 +22,7 @@ spec:
         run: invoices-svc
     spec:
       containers:
-      - image: invoices_svc:v4
+      - image: gcr.io/pdpkube/invoices_svc:v4
         imagePullPolicy: IfNotPresent
         name: invoices-svc
         env:

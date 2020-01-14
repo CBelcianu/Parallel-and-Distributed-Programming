@@ -22,7 +22,7 @@ spec:
         run: auth-svc
     spec:
       containers:
-      - image: auth_svc:v1
+      - image: gcr.io/pdpkube/auth_svc:v1
         imagePullPolicy: IfNotPresent
         name: auth-svc
         env:

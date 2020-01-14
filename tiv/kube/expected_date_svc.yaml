@@ -22,7 +22,7 @@ spec:
         run: expected-date-svc
     spec:
       containers:
-      - image: expected_date_svc:v1
+      - image: gcr.io/pdpkube/expected_date_svc:v1
         imagePullPolicy: IfNotPresent
         name: expected-date-svc
         ports:
