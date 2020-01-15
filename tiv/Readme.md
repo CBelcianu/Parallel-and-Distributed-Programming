@@ -26,10 +26,9 @@ Run the following command to connect to your cluster. [PROJECT_ID] represents th
 $ gcloud container clusters get-credentials pdp-cluster --zone us-central1-a --project [PROJECT_ID]
 ```
 
-Running the following command should result in:
+Running `$ kubectl get services` should result in:
 
 ```shell
-$ kubectl get services
 NAME                TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
 kubernetes          ClusterIP      10.0.0.1      <none>           443/TCP          21s
 ```
