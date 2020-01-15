@@ -2,6 +2,8 @@
 
 
 
+This cluster uses resources from [this medium tutorial]( https://medium.com/hackernoon/getting-started-with-microservices-and-kubernetes-76354312b556 ). You should get through it before reading this so you get a better idea of what's actually happening.
+
 ##### 1. CREATING A NEW CLUSTER
 
 We'll use GKE to create a Kubernetes cluster on Google's cloud platform. Navigate to the 'Clusters' tab of GKE and hit 'CREATE CLUSTER' The cluster will have 1 node and will run on a VM with 4vCores.
@@ -107,4 +109,65 @@ template:
         - containerPort: 8080
 ```
 
-Now do the same for each .yaml file.
+Now do the same for each .yaml file besides the ambassador one.
+
+So what now? Well, just apply them  :trollface:.
+
+```shell
+$ kubectl apply -f invoices_svc.yaml
+$ kubectl apply -f expected_date_svc.yaml
+$ kubectl apply -f auth_svc.yaml
+$ kubectl apply -f ambassador.yaml
+```
+
+Did it work? Let's check!
+
+```shell
+$ kubectl get services
+NAME                TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
+ambassador          LoadBalancer   10.0.10.202   35.222.203.242   80:32436/TCP     21h
+ambassador-admin    NodePort       10.0.2.230    <none>           8877:30496/TCP   21h
+auth-svc            ClusterIP      10.0.12.211   <none>           3000/TCP         21h
+expected-date-svc   ClusterIP      10.0.14.177   <none>           80/TCP           21h
+invoices-svc        ClusterIP      10.0.9.85     <none>           80/TCP           21h
+kubernetes          ClusterIP      10.0.0.1      <none>           443/TCP          22h
+```
+
+It worked! Now we can run a couple of extra commands just to make sure.
+
+```shell
+$ kubectl get pods
+NAME                                 READY   STATUS    RESTARTS   AGE
+ambassador-68cbddb869-4ccmd          2/2     Running   1          21h
+ambassador-68cbddb869-6qpgq          2/2     Running   0          21h
+ambassador-68cbddb869-lnnvw          2/2     Running   0          21h
+auth-svc-676c7bb6d-bhg9r             1/1     Running   0          21h
+auth-svc-676c7bb6d-dvg6c             1/1     Running   0          21h
+auth-svc-676c7bb6d-hltmn             1/1     Running   0          21h
+expected-date-svc-58db79db6d-4kr6t   1/1     Running   0          21h
+expected-date-svc-58db79db6d-5xpg4   1/1     Running   0          21h
+expected-date-svc-58db79db6d-6z7z8   1/1     Running   0          21h
+invoices-svc-89b875d48-dkjbp         1/1     Running   0          21h
+invoices-svc-89b875d48-fvmc5         1/1     Running   0          21h
+invoices-svc-89b875d48-rqf8m         1/1     Running   0          21h
+
+$ kubectl get deployments
+NAME                READY   UP-TO-DATE   AVAILABLE   AGE
+ambassador          3/3     3            3           21h
+auth-svc            3/3     3            3           21h
+expected-date-svc   3/3     3            3           21h
+invoices-svc        3/3     3            3           22h
+```
+
+Now all that remains is to test it. We will have to run a `curl` command to our ambassador service providing a authorization token. So how do we do that? Firstly we have to get the external IP address of our ambassador deployment. In GKE navigate to 'Services & Ingress'. You should see something like this:
+
+![](https://github.com/CBelcianu/Parallel-and-Distributed-Programming/blob/master/tiv/images/services.PNG)
+
+Under 'Endpoints' we can see the external IP address of the ambassador service. Click on it. It opens a new browser tab that says `{ok: false}`. That's because you didn't provide any token. Now on your local machine open a new terminal and execute the following command:
+
+```shell
+$ curl http://35.222.203.242/invoices/42 -H 'authorization: letmeinpleasekthxbye'
+{"id":42,"ref":"INV-42","amount":4200,"balance":4190,"ccy":"GBP","expectedDate":"2020-01-23T15:46:09.892Z"}
+```
+
+It worked! Amazing, the server responded. Now, if you try to run the same command without the token you should get `{ok: false}` again.
