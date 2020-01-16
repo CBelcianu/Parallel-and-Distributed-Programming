@@ -88,7 +88,7 @@ If we run `$ ls` In the 'kube' directory we should see the following files:
 ambassador.yaml  auth_svc.yaml  expected_date_svc.yaml  invoices_svc.yaml
 ```
 
-Now we have to tell each .yaml file, besides the ambassador one, where to find the docker image. In order to do this execute `$ vim invoices_svc.yaml`.
+Now we have to tell each .yaml file, besides the ambassador one, where to find their corresponding docker image. In order to do this execute `$ vim invoices_svc.yaml`.
 
 ```yaml
 template:
