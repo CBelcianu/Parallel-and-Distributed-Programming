@@ -33,7 +33,7 @@ NAME                TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)       
 kubernetes          ClusterIP      10.0.0.1      <none>           443/TCP          21s
 ```
 
-Good, looks like the cluster is working and we can start adding some services. We'll add the invoices, expected-date, authentication and ambassador services. In order to apply invoices, expected-date and authentication we have to use Docker.
+Good, looks like the cluster is working and we can start adding some services. We'll add the invoices, expected-date, authentication and ambassador services. In order to apply invoices, expected-date and authentication we have to use Docker in order to build images using thier associated Dockerfile.
 
 Run the following commands to build the docker images corresponding to each of our services:
 
