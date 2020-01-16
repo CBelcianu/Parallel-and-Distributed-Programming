@@ -168,4 +168,4 @@ $ curl http://35.222.203.242/invoices/42 -H 'authorization: letmeinpleasekthxbye
 {"id":42,"ref":"INV-42","amount":4200,"balance":4190,"ccy":"GBP","expectedDate":"2020-01-23T15:46:09.892Z"}
 ```
 
-It worked! Amazing, the server responded. Now, if you try to run the same command without the token you should get `{ok: false}` again.
+It worked! Amazing, the server responded. Now, if you try to run the same command without specifying the token you should get `{ok: false}` again.
