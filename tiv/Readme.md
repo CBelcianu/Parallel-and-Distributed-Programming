@@ -98,7 +98,7 @@ template:
     spec:
       containers:
       - image: gcr.io/[PROJECT_ID]/invoices_svc:v4 #THIS IS WHERE WE SPECIFIED THE PATH
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: IfNotPresent #DON'T FORGET TO REPLACE [PROJECT_ID]
         name: invoices-svc
         env:
           - name: EXPECTED_DATE_URI
