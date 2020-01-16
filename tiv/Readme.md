@@ -52,7 +52,7 @@ expected_date_svc   v1                  923c74w938s8        27s ago             
 auth_svc            v1                  2934u389ds32        20s ago             539MB
 ```
 
-Hooray! We've successfully built the images, but what now? Pretty simple actually, now we have to push the into the Google Container Registry (GCR) associated with our project. In order to push our images, we have to tell docker to "gcr.io/[PROJECT_ID]/[IMAGE]:[TAG]" where [PROJECT_ID] you already know what it is and [IMAGE] is the name of the image (the string under 'REPOSITORY' in the above output) and [TAG] is it's tag.
+Hooray! We've successfully built the images, but what now? Pretty simple actually, now we have to push them into the Google Container Registry (GCR) associated with our project. In order to push our images, we have to tell docker to "gcr.io/[PROJECT_ID]/[IMAGE]:[TAG]" where [PROJECT_ID] you already know what it is and [IMAGE] is the name of the image (the string under 'REPOSITORY' in the above output) and [TAG] is it's tag.
 
 In our case, we should run these commands:
 
