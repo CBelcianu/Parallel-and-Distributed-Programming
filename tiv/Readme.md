@@ -62,7 +62,7 @@ $ docker tag expected_date_svc:v1 "gcr.io/${PROJECT_ID}/expected_date_svc:v1"
 $ docker tag auth_svc:v1 "gcr.io/${PROJECT_ID}/auth_svc:v1"
 ```
 
-Keep in mind the PROJECT_ID is the id of the project associated with the cluster. Mine was 'pdpkube' for example.
+Keep in mind that PROJECT_ID is the id of the project associated with the cluster. Mine was 'pdpkube' for example.
 
 Now, to push the images to GCR just run these commands:
 
