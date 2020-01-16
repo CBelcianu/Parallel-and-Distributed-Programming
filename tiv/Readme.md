@@ -4,6 +4,7 @@
 
 This cluster uses resources from [this medium tutorial]( https://medium.com/hackernoon/getting-started-with-microservices-and-kubernetes-76354312b556 ). You should get through it before reading this so you get a better idea of what's actually happening.
 
+
 ##### 1. CREATING A NEW CLUSTER
 
 We'll use GKE to create a Kubernetes cluster on Google's cloud platform. Navigate to the 'Clusters' tab of GKE and hit 'CREATE CLUSTER'. The cluster will have 1 node and will run on a VM with 4vCores.
@@ -77,6 +78,7 @@ Let's see if it worked. Navigate to your GCR and you should see something like t
 ![]( https://github.com/CBelcianu/Parallel-and-Distributed-Programming/blob/master/tiv/images/images.PNG )
 
 I messed up a little bit and pushed the invoices image twice but it won't affect us :smile:.
+
 
 ##### 3. ADDING SERVICES TO THE CLUSTER
 
