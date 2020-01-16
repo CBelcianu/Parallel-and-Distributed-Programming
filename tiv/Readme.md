@@ -43,7 +43,7 @@ $ docker build ../expected_date_svc/ -t expected_date_svc:v1
 $ docker build ../auth_svc/ -t auth_svc:v1
 ```
 
-Keep in mind that the commands were executed from inside the 'kube' directory (this is not mandatory, as long as you correctly specify the path to the Dockerfile you can run the commands from anywhere). Good, now, to make sure that Docker actually built the images we shall run the following command:
+Keep in mind that the commands were executed from inside the 'kube' directory (this is not mandatory, as long as you correctly specify the path to the Dockerfile you can run the commands from anywhere). Good, now to make sure that Docker actually built the images we shall run the following command:
 
 ```shell
 $ docker images
